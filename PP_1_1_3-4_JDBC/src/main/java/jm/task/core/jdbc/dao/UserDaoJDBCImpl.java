@@ -34,7 +34,7 @@ public class UserDaoJDBCImpl implements UserDao {
         } finally {
             try {
                 statement.close();
-
+                connection.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -59,6 +59,7 @@ public class UserDaoJDBCImpl implements UserDao {
         } finally {
             try {
                 statement.close();
+                connection.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -88,6 +89,7 @@ public class UserDaoJDBCImpl implements UserDao {
         } finally {
             try {
                 preparedStatement.close();
+                connection.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -118,6 +120,7 @@ public class UserDaoJDBCImpl implements UserDao {
         } finally {
             try {
                 preparedStatement.close();
+                connection.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -151,6 +154,7 @@ public class UserDaoJDBCImpl implements UserDao {
         } finally {
             try {
                 statement.close();
+                connection.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -176,6 +180,7 @@ public class UserDaoJDBCImpl implements UserDao {
         } finally {
             try {
                 statement.close();
+                connection.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
