@@ -12,6 +12,7 @@ public class Util {
          Connection connection = null;
         try  {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            connection.setAutoCommit(false);
             if (!connection.isClosed()) {
                 System.out.println("Подключение прошло успешно!");
             }
