@@ -1,6 +1,7 @@
 package jm.task.core.jdbc.service;
 
 import jm.task.core.jdbc.dao.UserDao;
+import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
 import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
 import jm.task.core.jdbc.model.User;
 
@@ -8,11 +9,11 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
-    UserDao userDaoJDBC = new UserDaoJDBCImpl();
+    UserDao userDaoHibernate = new UserDaoHibernateImpl();
 
     public void createUsersTable() {
         try {
-            userDaoJDBC.createUsersTable();
+            userDaoHibernate.createUsersTable();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -20,7 +21,7 @@ public class UserServiceImpl implements UserService {
 
     public void dropUsersTable() {
         try {
-            userDaoJDBC.dropUsersTable();
+            userDaoHibernate.dropUsersTable();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -28,7 +29,7 @@ public class UserServiceImpl implements UserService {
 
     public void saveUser(String name, String lastName, byte age) {
         try {
-            userDaoJDBC.saveUser(name, lastName, age);
+            userDaoHibernate.saveUser(name, lastName, age);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -36,7 +37,7 @@ public class UserServiceImpl implements UserService {
 
     public void removeUserById(long id) {
         try {
-            userDaoJDBC.removeUserById(id);
+            userDaoHibernate.removeUserById(id);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -45,7 +46,7 @@ public class UserServiceImpl implements UserService {
 
     public List<User> getAllUsers() {
         try {
-            return userDaoJDBC.getAllUsers();
+            return userDaoHibernate.getAllUsers();
         } catch (SQLException e) {
             throw new RuntimeException();
         }
@@ -53,7 +54,7 @@ public class UserServiceImpl implements UserService {
 
     public void cleanUsersTable() {
         try {
-            userDaoJDBC.cleanUsersTable();
+            userDaoHibernate.cleanUsersTable();
         } catch (SQLException e) {
             e.printStackTrace();
         }
