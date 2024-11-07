@@ -23,7 +23,11 @@ public class UserDaoJDBCImpl implements UserDao {
         try {
             statement = connection.createStatement();
             statement.executeUpdate(createTable);
-            connection.commit();
+            try {
+                connection.commit();
+            } catch (SQLException commit) {
+                commit.printStackTrace();
+            }
         } catch (SQLException e) {
             try {
                 connection.rollback();
@@ -48,7 +52,11 @@ public class UserDaoJDBCImpl implements UserDao {
         try {
             statement = connection.createStatement();
             statement.execute(dropUsersTable);
-            connection.commit();
+            try {
+                connection.commit();
+            } catch (SQLException commit) {
+                commit.printStackTrace();
+            }
         } catch (SQLException e) {
             try {
                 connection.rollback();
@@ -77,7 +85,11 @@ public class UserDaoJDBCImpl implements UserDao {
             preparedStatement.setString(2, lastName);
             preparedStatement.setByte(3, age);
             preparedStatement.executeUpdate();
-            connection.commit();
+            try {
+                connection.commit();
+            } catch (SQLException commit) {
+                commit.printStackTrace();
+            }
             System.out.printf("User с именем — %s добавлен в базу данных\n", name);
         } catch (SQLException e) {
             try {
@@ -104,7 +116,11 @@ public class UserDaoJDBCImpl implements UserDao {
             preparedStatement = connection.prepareStatement(removeUserById);
             preparedStatement.setLong(1, id);
             int rowsAffected = preparedStatement.executeUpdate();
-            connection.commit();
+            try {
+                connection.commit();
+            } catch (SQLException commit) {
+                commit.printStackTrace();
+            }
             if (rowsAffected > 0) {
                 System.out.printf("Пользователь с ID:  %d  успешно удален.\n", id);
             } else {
@@ -143,7 +159,11 @@ public class UserDaoJDBCImpl implements UserDao {
                 User user = new User(name, lastName, age);
                 users.add(user);
             }
-            connection.commit();
+            try {
+                connection.commit();
+            } catch (SQLException commit) {
+                commit.printStackTrace();
+            }
         } catch (SQLException e) {
             try {
                 connection.rollback();
@@ -169,7 +189,11 @@ public class UserDaoJDBCImpl implements UserDao {
         try {
             statement = connection.createStatement();
             statement.executeUpdate(cleanUsersTable);
-            connection.commit();
+            try {
+                connection.commit();
+            } catch (SQLException commit) {
+                commit.printStackTrace();
+            }
         } catch (SQLException e) {
             try {
                 connection.rollback();
